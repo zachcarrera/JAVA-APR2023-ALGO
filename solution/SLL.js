@@ -198,7 +198,69 @@ class SLL {
       }
       this.head = emptyHead.next;
     }
+  /**
+   * Removes all the nodes that have a negative integer as their data.
+   * - Time: (?).
+   * - Space: (?).
+   * @returns {SinglyLinkedList} This list after the negatives are removed.
+   Level 1: one negative number in the middle
+   level 2: negative at head, end
+   level 3: multiple negative numbers (middle, head, end)
+   */
+  removeNegatives() {
+    if (!this.head) {
+      return this;
+    }
 
+    let emptyHead = new ListNode(0);
+    emptyHead.next = this.head;
+
+    let previous = emptyHead
+    let current = this.head; 
+
+    while (current) {
+      if (current.data < 0) {
+        // remove node
+        previous.next = current.next;
+        current = current.next;
+        continue;
+      }
+      previous = current;
+      current = current.next;
+    }
+    this.head = emptyHead.next;
+    
+    return this;
+  }
+
+    
+  /**
+   * Reverses this list in-place without using any extra lists.
+   * - Time: (?).
+   * - Space: (?).
+   * @returns {SinglyLinkedList} This list.
+   */
+  reverse() {
+//
+    
+    if(!this.head || !this.head.next){
+      return this;
+    }
+    let prev; // null 
+    let current = this.head; // 1 
+      while(current){ // whille there is a head 
+          let next = current.next; // 2 
+          current.next = prev; // 1.next = null 
+          prev = current; // 1
+          current = next; // 2
+          
+      }
+      this.head = prev; // 1 
+      return this;
+    //tail =  thsi.head
+      // 1, 2, 3, 4
+      // curr
+  }
 
   
   //given
